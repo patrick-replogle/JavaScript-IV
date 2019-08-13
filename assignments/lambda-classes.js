@@ -32,19 +32,13 @@ class Student extends Person {
         this.favSubjects = attributes.favSubjects;
     }
     listsSubjects() {
-        const subjects = [];
-        const newArray = Student.favSubjects.forEach(function (element){
-            subjects.push(element.favSubjects);
-        });   
-    }
-    listsSubjets() {
         return `${this.favSubjects}`;
     }
-    PRAssignment(subject) {
+    PRAssignment(student, subject) {
         return `${student.name} has submitted a PR for ${subject}`;
     }
-    sprintChallenge(subject) {
-        return `${student.name} has begun sprint challnge on ${subject}.`
+    sprintChallenge(student, subject) {
+        return `${student.name} has begun the sprint challange on ${subject}.`
     }
 };
 
@@ -58,8 +52,8 @@ class ProjectManager extends Person {
     standUp(channel) {
         return `${this.name} announces to ${channel}, @channel standy times!`
     }
-    debugsCode() {
-        return `${this.name} debubs ${student.name}'s code on {this.}`
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`;
     }
 };
 
@@ -96,10 +90,66 @@ const patrick = new Student ({
     location: 'Portland',
     previousBackground: 'Retail',
     className: 'WebPT9',
-    // favSubjects= ['Javscipt', 'Python', 'C']
+    favSubjects: ['Javscipt', 'Python', 'C']
+})
+
+const james = new Student ({
+    name: 'James',
+    age: 21,
+    location: 'Scotland',
+    previousBackground: 'Banking',
+    className: 'WebPT9',
+    favSubjects: ['Javscipt', 'Python', 'C']
+})
+
+const carina = new Student ({
+    name: 'Carina',
+    age: 26,
+    location: 'Los Angeles',
+    previousBackground: 'Coding',
+    className: 'WebPT9',
+    favSubjects: ['Javscipt', 'Python', 'C']
+})
+
+const cj = new ProjectManager ({
+    name: 'CJ',
+    age: 26,
+    location: 'Los Angeles',
+    gradClassName: 'Web16',
+    favInstructor: 'Josh Knell',
+    channel: 'zoom.com'
+})
+
+const gina = new ProjectManager ({
+    name: 'Gina Chistians',
+    age: 32,
+    location: 'NYC',
+    gradClassName: 'Web16',
+    favInstructor: 'Pace Ellsworth',
+    channel: 'zoom.com'
+})
+
+const fred = new ProjectManager ({
+    name: 'Fred',
+    age: 39,
+    location: 'Chicago',
+    gradClassName: 'Web16',
+    favInstructor: 'Dan Frehner',
+    channel: 'zoom.com'
 })
 
 console.log(todd.speak());
 console.log(josh.catchPhrase)
-console.log(pace.demo('javscript'));
-console.log(pace.grade(patrick, 'javascript'));
+console.log(pace.demo('Javascript'));
+console.log(pace.grade('Carina', 'Javascript'));
+console.log(gina.favInstructor);
+console.log(fred.age);
+console.log(cj.channel);
+console.log(josh.grade(patrick, 'Javascript'));
+console.log(cj.standUp('webpt9'))
+console.log(gina.debugsCode(patrick, 'Javascript'));
+console.log(james.listsSubjects());
+console.log(carina.PRAssignment(carina, 'CSS'));
+console.log(james.sprintChallenge(james, 'Python'));
+console.log(todd.grade(fred, 'C#'));
+
