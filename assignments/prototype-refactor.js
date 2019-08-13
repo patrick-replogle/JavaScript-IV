@@ -27,14 +27,14 @@
 //   };
   
 class GameObject {
-    constructor(attributes){
-        this.createdAt = attributes.createdAt;
-        this.name = attributes.name;
-        this.dimensions = attributes.dimensions;
-    }
-    destroy(){
-        return `${this.name} was removed from the game.`;
-    }
+  constructor(attributes){
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
+  }
+  destroy(){
+    return `${this.name} was removed from the game.`;
+  }
 };
 
   /*
@@ -56,13 +56,13 @@ class GameObject {
 //   };
 
 class CharacterStats extends GameObject {
-    constructor(stats){
-        super(stats);
-        this.healthPoints = stats.healthPoints;
-    }
-    takeDamage(){
-        return `${this.name} took damage.`;
-    }
+  constructor(stats){
+    super(stats);
+    this.healthPoints = stats.healthPoints;
+  }
+  takeDamage(){
+    return `${this.name} took damage.`;
+  }
 };
   
   /*
@@ -89,15 +89,15 @@ class CharacterStats extends GameObject {
 //   };
   
 class Humanoid extends CharacterStats {
-    constructor(attributes){
-        super(attributes);
-        this.team = attributes.team;
-        this.weapons = attributes.weapons;
-        this.language = attributes.language
-    }
-    greet(){
-        return `${this.name} offers a greeting in ${this.language}.`;   
-    }
+  constructor(attributes){
+    super(attributes);
+    this.team = attributes.team;
+    this.weapons = attributes.weapons;
+    this.language = attributes.language
+  }
+  greet(){
+    return `${this.name} offers a greeting in ${this.language}.`;   
+  }
 };
 
 
@@ -133,13 +133,15 @@ class Hero extends Humanoid {
         this.attack = attributes.attack;
         this.enemyHealth = attributes.enemyHealth;
     }
-    battleStart(){
+    fight(){
         return `Our hero ${this.name} will duel with the terrible Drago!`;
     };
     slashed(){
-        console.log(this.healthPoints = this.healthPoints + this.armor - this.attack);
+        this.healthPoints = this.healthPoints + this.armor - this.attack;
         if(this.healthPoints <= 0){
-        console.log(`${this.name} is dead!`);
+        return `${this.name} is dead!`;
+        } else {
+          return `${this.name} was slashed. Life bar = ${this.healthPoints}/10 left`;
         }
     }
 };
@@ -161,18 +163,20 @@ class Hero extends Humanoid {
 //   };
 
 class Villain extends Humanoid {
-    constructor(attributes){
-        super(attributes);
-        this.armor = attributes.armor;
-        this.attack = attributes.attack;
-        this.enemyHealth = attributes.enemyHealth;
+  constructor(attributes){
+    super(attributes);
+    this.armor = attributes.armor;
+    this.attack = attributes.attack;
+    this.enemyHealth = attributes.enemyHealth;
+  }
+  damaged(){
+    this.healthPoints = this.healthPoints + this.armor - this.attack;
+    if(this.healthPoints <= 0){
+    return `${this.name} is dead!`;
+    } else {
+      return `${this.name} was damaged. Life bar = ${this.healthPoints}/10 left`;
     }
-    damaged(){
-        console.log(this.healthPoints = this.healthPoints + this.armor - this.attack);
-        if(this.healthPoints <= 0){
-        console.log(`${this.name} is dead!`);
-        }
-    }
+  }
 };
   
   // Test you work by un-commenting these 3 objects and the list of console logs below:
@@ -279,14 +283,14 @@ class Villain extends Humanoid {
     console.log(archer.greet()); // Lilith offers a greeting in Elvish.
     console.log(mage.takeDamage()); // Bruce took damage.
     console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-    console.log(knight.battleStart());
-    evilKnight.damaged();
-    knight.slashed();
-    evilKnight.damaged();
-    knight.slashed();
-    evilKnight.damaged();
-    knight.slashed();
-    evilKnight.damaged();
+    console.log(knight.fight());
+    console.log(evilKnight.damaged());
+    console.log(knight.slashed());
+    console.log(evilKnight.damaged());
+    console.log(knight.slashed());
+    console.log(evilKnight.damaged());
+    console.log(knight.slashed());
+    console.log(evilKnight.damaged());
    
     // Stretch task: 
     // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
