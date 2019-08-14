@@ -141,7 +141,7 @@ const fred = new ProjectManager ({
 console.log(todd.speak());
 console.log(josh.catchPhrase)
 console.log(pace.demo('Javascript'));
-console.log(pace.grade('Carina', 'Javascript'));
+console.log(pace.grade(carina, 'Javascript'));
 console.log(gina.favInstructor);
 console.log(fred.age);
 console.log(cj.channel);
