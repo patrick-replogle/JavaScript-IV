@@ -32,8 +32,14 @@ class Student extends Person {
         this.favSubjects = attributes.favSubjects;
     }
     listsSubjects() {
-        return `${this.favSubjects}`;
+        let logSubjects = this.favSubjects.forEach(element => console.log(element));
+        return logSubjects;
     }
+    // listsSubjects() {
+    //     for(let i = 0; i < this.favSubjects.length; i++) {
+    //     console.log(this.favSubjects[i]);
+    //     } 
+    // }
     PRAssignment(student, subject) {
         return `${student.name} has submitted a PR for ${subject}`;
     }
@@ -90,7 +96,7 @@ const patrick = new Student ({
     location: 'Portland',
     previousBackground: 'Retail',
     className: 'WebPT9',
-    favSubjects: ['Javscipt', 'Python', 'C']
+    favSubjects: ['Javascipt', 'Python', 'C']
 })
 
 const james = new Student ({
@@ -99,7 +105,7 @@ const james = new Student ({
     location: 'Scotland',
     previousBackground: 'Banking',
     className: 'WebPT9',
-    favSubjects: ['Javscipt', 'Python', 'C']
+    favSubjects: ['Javascipt', 'Python', 'C']
 })
 
 const carina = new Student ({
@@ -108,7 +114,7 @@ const carina = new Student ({
     location: 'Los Angeles',
     previousBackground: 'Coding',
     className: 'WebPT9',
-    favSubjects: ['Javscipt', 'Python', 'C']
+    favSubjects: ['Javascipt', 'Python', 'C']
 })
 
 const cj = new ProjectManager ({
@@ -148,7 +154,8 @@ console.log(cj.channel);
 console.log(josh.grade(patrick, 'Javascript'));
 console.log(cj.standUp('webpt9'))
 console.log(gina.debugsCode(patrick, 'Javascript'));
-console.log(james.listsSubjects());
+//console.log(james.listsSubjects())
+james.listsSubjects();
 console.log(carina.PRAssignment(carina, 'CSS'));
 console.log(james.sprintChallenge(james, 'Python'));
 console.log(todd.grade(fred, 'C#'));
